@@ -755,28 +755,51 @@ input {
 
 /*=============== MEDIA QUERIES ===============*/
 /* For small devices */
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 768px) {
+  
+  .home__social {
+    flex-direction: row;
+    align-self: flex-end;
+    margin-bottom: 3rem;
+    column-gap: 2.5rem;
+  }
   .place__container {
-    grid-template-columns: max-content;
+    grid-template-columns: 1fr;
     justify-content: center;
   }
+
   .experience__content {
-    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr; 
+    justify-items: start;  
+    text-align: left;         
+    padding: 0 1rem;
+    row-gap: 2rem;
   }
-  .experience__overlay:nth-child(1) {
-    width: 190px;
+
+  .experience__overlay {
+    width: 100% !important;
+    position: static !important;
+    margin: 0 auto;
   }
-  .experience__overlay:nth-child(2) {
-    width: 80px;
+
+  .experience__img {
+    padding-bottom: 1rem;
+    text-align: center;
   }
-  .home__info {
-    width: 190px;
-    padding: 1rem;
+
+  .experience__img-two {
+    margin-top: 1rem;
   }
-  .experience__img,
-  .video__container {
-    padding: 0;
-  }
+  
+  .footer__content {
+    display: grid;
+    grid-template-columns: 1fr; 
+    justify-items: start;  
+    text-align: left;         
+    padding: 0 1rem;
+    row-gap: 2rem;
+  }  
 }
 
 /* For medium devices */
