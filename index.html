@@ -19,6 +19,7 @@
         <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script type="text/javascript">
         (function(){
             emailjs.init({
@@ -27,6 +28,8 @@
         })();
         </script>
         <script src="assets/js/form.js"></script>
+        <script src="assets/js/auth.js"></script>
+        <script src="assets/js/booking.js"></script>
     </head>
     <body>
         <header class="header" id="header">
@@ -114,7 +117,7 @@
                         <p class="about__description">A quite, romantic private venue and close-to-nature events place. It is a perfect venue for your memorable moments. A pavilion is sheltered by tall and fruit-bearing trees which give a unique charm and refreshing ambiance. It has a koi pond stairway leading to the entrance of the pavilion.
                         </p>
                         <p class="about__description">Ideal for birthdays, garden wedding, debuts christening, anniversaries, reunions, and other special events and occassions.</p>
-                        <a href="#appointment" class="button">Book Now</a>
+                        <a href="#auth-section" class="button">Book Now</a>
                     </div>
 
                     <div class="about__img">
@@ -262,31 +265,67 @@
             </div>
             </section>
 
-            <!--==================== BOOK AN APPOINTMENT ====================-->
-            <section class="appointment section" id="appointment">
+            <section class="appointment section" id="auth-section">
+                <div class="appointment__bg">
+                    <div class="appointment__container container">
+                    <h2 class="appointment__title">Booking an Appointment Access</h2>
+                    <p class="appointment__description">
+                        Log in or register to book an appointment.
+                    </p>
+
+                    <!-- Login Form -->
+                    <form id="login-form" class="appointment__form" onsubmit="handleLogin(event)">
+                        <input type="email" id="login-email" placeholder="Email" class="appointment__input" required />
+                        <input type="password" id="login-password" placeholder="Password" class="appointment__input" required />
+                        <button type="submit" class="button">Login</button>
+                        <p style="text-align: center; margin-top: 1rem;">
+                            Don’t have an account? <a href="#auth-section" onclick="toggleToRegister()">Register here</a>
+                        </p>
+                    </form>
+
+
+                    <!-- Register Form -->
+                    <form id="register-form" class="appointment__form" onsubmit="handleRegister(event)" style="display: none;">
+                        <input type="email" id="register-email" placeholder="Email" class="appointment__input" required />
+                        <input type="password" id="register-password" placeholder="Password" class="appointment__input" required />
+                        <button type="submit" class="button">Register</button>
+                        <p style="text-align: center; margin-top: 1rem;">
+                            Already have an account? <a href="#auth-section" onclick="toggleToLogin()">Login here</a>
+                        </p>
+                    </form>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="appointment section" id="appointment" style="display: none;">
             <div class="appointment__bg">
                 <div class="appointment__container container">
                 <h2 class="appointment__title">Book an Appointment</h2>
-                <p class="appointment__description">
-                    Fill out the form and we'll reach out to you shortly.
-                </p>
 
                 <form id="appointment-form" class="appointment__form">
-                    <input type="text" name="name"  placeholder="Your Name" class="appointment__input" required>
-                    <input type="email" name="email"  placeholder="Your Email" class="appointment__input" required>
+                    <input type="text" name="name" placeholder="Your Name" class="appointment__input" required>
+                    <input type="email" name="email" placeholder="Your Email" class="appointment__input" required>
                     <input type="text" name="subject" placeholder="Subject" class="appointment__textarea" required>
                     <input type="hidden" name="date" id="form-date">
                     <textarea name="message" placeholder="Your Message / Preferred Time" rows="4" class="appointment__textarea" required></textarea>
 
-                    <button type="submit" id="submit-btn" class="button" onclick="sendEmail()">Send Request</button>
+                    <button type="submit" id="submit-btn" class="button">Send Request</button>
                 </form>
 
                 <p id="form-status" class="status-message"></p>
 
+                <!-- ✅ Only ONE logout container -->
+                <div id="logout-container" style="margin-top: 1rem; display: none;">
+                    <button id="logout-btn" class="button" onclick="handleLogout()" style="background-color: var(--first-color-second);">
+                    Logout
+                    </button>
+                </div>
+
                 </div>
             </div>
             </section>
-           
+
+                
         <!--==================== CONTACT INFO ====================-->
         <section class="contact section" id="contact">
         <div class="contact__container container">
