@@ -378,16 +378,18 @@ input {
 
 /*=============== BUTTONS ===============*/
 .button {
-  display: inline-block;
+  padding: 0.75rem 1.5rem;
   background-color: var(--first-color);
   color: var(--white-color);
-  padding: 1rem 2rem;
-  font-weight: var(--font-semi-bold);
-  transition: .3s;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: var(--first-color-alt);
+  background-color: var(--first-color-alt); /* Optional hover color */
 }
 
 .button--flex {
@@ -631,21 +633,6 @@ input {
 .appointment__input::placeholder,
 .appointment__textarea::placeholder {
   color: var(--text-color);
-}
-
-.button {
-  padding: 0.75rem 1.5rem;
-  background-color: var(--first-color);
-  color: var(--white-color);
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: var(--first-color-alt); /* Optional hover color */
 }
 
 .status-message {
